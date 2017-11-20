@@ -7,37 +7,53 @@ class Queries extends Component {
   render() {
     const {queries} = this.props;
     const columns = [{
+      Header: 'Timestamp',
+      id: 'timestamp',
+      accessor: query => query.startedDateTime.toISOString()
+    },{
       Header: 'Name',
       id: 'name',
+      minWidth: 300,
       accessor: query => query.request.url
     },{
       Header: 'Status',
       id: 'status',
+      maxWidth: 100,
       accessor: query => query.response.status
     },{
       Header: 'Size',
       id: 'size',
+      maxWidth: 100,
       accessor: query => query.response.content.size
     },{
       Header: 'Time',
       id: 'time',
+      maxWidth: 100,
       accessor: query => query.time
-    },{
-      Header: 'Started Date',
-      id: 'start-date',
-      accessor: query => query.startedDateTime.toISOString()
     }];
 
     return (
       <ReactTable
         data={queries}
         columns={columns}
-        defaultPageSize={25}
+        showPaginationTop={true}
+        showPaginationBottom={false}
         className='-striped -highlight'
-        getTrProps={(state, rowInfo) => {
-          return {
+        getTdProps={(state, rowInfo, column) => {
+          if (!rowInfo) return {
+            style: {
+              display: 'none'
+            }
+          };
+
+          return (column.id === 'name') && {
+            style: {
+              cursor: 'pointer'
+            },
             onClick: (e, handleOriginal) => {
+              alert(`clicked on index ${rowInfo.index}`)
               console.log('It was in this row:', rowInfo)
+
               if (handleOriginal) handleOriginal();
             }
           }
