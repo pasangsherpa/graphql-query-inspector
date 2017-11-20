@@ -6,10 +6,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.bundle.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -21,10 +21,11 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new UglifyJSPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/index.html'
+      template: 'src/main.html',
+      filename: 'main.html'
     }),
     new CopyWebpackPlugin([
-      'src/chrome/',
+      'src/assets/',
       'manifest.json'
     ])
   ]

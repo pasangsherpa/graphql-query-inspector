@@ -3,7 +3,11 @@
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "Chrome extension for inspecting graphql queries",
-  "devtools_page": "devtools.html",
+  "devtools_page": "main.html",
+  "icons": {
+    "48": "inspect@48.png",
+    "128": "inspect@128.png"
+  },
   "permissions": [
     "*://*/*"
   ]

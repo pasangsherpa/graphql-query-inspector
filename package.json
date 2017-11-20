@@ -2,7 +2,7 @@
   "name": "graphql-query-inspector",
   "version": "0.0.1",
   "description": "Chrome extension for inspecting graphql queries",
-  "main": "index.js",
+  "main": "src/main.js",
   "scripts": {
     "build": "webpack"
   },
@@ -19,6 +19,11 @@
       "react"
     ]
   },
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-table": "^6.7.4"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -34,15 +39,10 @@
   },
   "keywords": [
     "react",
-    "redux",
     "graphql",
     "chrome",
     "extension"
   ],
   "author": "Pasang Sherpa <pgsherpa@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
-  }
+  "license": "MIT"
 }
