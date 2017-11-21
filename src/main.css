@@ -2,3 +2,20 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+#main, #side {
+  position: absolute;
+}
+
+#main {
+  top: 0px;
+  bottom: 0px;
+  width: 400px;
+}
+
+#side {
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 400px;
+}

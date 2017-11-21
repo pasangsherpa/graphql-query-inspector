@@ -17,10 +17,7 @@ const html = 'main.html';
 
 const renderApp = panelWindow => {
   ReactDOM.render(
-    <App
-      getHAR={getHAR}
-      onRequestFinished={onRequestFinished}
-    />,
+    <App onRequestFinished={onRequestFinished}/>,
     panelWindow.document.getElementById('root')
   );
 }

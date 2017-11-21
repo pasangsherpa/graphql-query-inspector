@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import ReactTable from 'react-table';
+import Query from './Query';
 
 import 'react-table/react-table.css';
 
 class Queries extends Component {
-  render() {
-    const {queries} = this.props;
-    const columns = [{
+  constructor(props) {
+    super(props);
+
+    this.state = {currentQuery: null};
+  }
+
+  getColumns() {
+    return [{
       Header: 'Timestamp',
       id: 'timestamp',
       accessor: query => query.startedDateTime.toISOString()
@@ -31,34 +37,55 @@ class Queries extends Component {
       maxWidth: 100,
       accessor: query => query.time
     }];
+  }
+
+  setCurrentQuery(query) {
+    this.setState({'currentQuery': query});
+    console.log('currentQuery', this.state.currentQuery)
+  }
+
+  render() {
+    const {queries} = this.props;
+    const getTdProps = (state, rowInfo, column) => {
+      if (!rowInfo) return {
+        style: {
+          display: 'none'
+        }
+      };
+
+      return (column.id === 'name') && {
+        style: {
+          cursor: 'pointer'
+        },
+        onClick: (e, handleOriginal) => {
+          this.setCurrentQuery(rowInfo.original);
+
+          if (handleOriginal) handleOriginal();
+        }
+      }
+    };
 
     return (
-      <ReactTable
-        data={queries}
-        columns={columns}
-        showPaginationTop={true}
-        showPaginationBottom={false}
-        className='-striped -highlight'
-        getTdProps={(state, rowInfo, column) => {
-          if (!rowInfo) return {
-            style: {
-              display: 'none'
-            }
-          };
-
-          return (column.id === 'name') && {
-            style: {
-              cursor: 'pointer'
-            },
-            onClick: (e, handleOriginal) => {
-              alert(`clicked on index ${rowInfo.index}`)
-              console.log('It was in this row:', rowInfo)
-
-              if (handleOriginal) handleOriginal();
-            }
-          }
-        }}
-      />
+      <div>
+        <div id='main' style={{'width': this.state.currentQuery ? '400px' : '100%'}}>
+          <ReactTable
+            data={queries}
+            columns={this.getColumns()}
+            showPaginationTop={true}
+            showPaginationBottom={false}
+            className='-striped -highlight'
+            getTdProps={getTdProps}
+          />
+        </div>
+        {this.state.currentQuery && (
+          <div id='side'>
+            <Query
+              query={this.state.currentQuery}
+              handleOnClose={() => this.setCurrentQuery(null)}
+            />
+          </div>
+        )}
+      </div>
     );
   }
 }

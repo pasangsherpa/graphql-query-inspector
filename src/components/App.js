@@ -21,11 +21,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Queries queries={this.state.queries}/>
-      </div>
-    );
+    return <Queries queries={this.state.queries}/>;
   }
 }
 
