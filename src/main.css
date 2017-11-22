@@ -61,6 +61,10 @@ html, body {
   border-bottom: 1px solid #d9d9d9;
 }
 
+.no-border {
+  border: none;
+}
+
 .collapsible-header {
   padding: 4px 0;
 }
@@ -72,7 +76,7 @@ html, body {
 
 ul {
   margin: 0;
-  padding: 0 0 6px 30px;
+  padding: 0 0 6px 23px;
   list-style: none;
 }
 
@@ -91,7 +95,7 @@ ul {
 }
 
 .arrow-down {
-  border-top: solid 8px rgb(200,30,50);
-  border-left: solid 8px #616161;
+  border-top: solid 8px #616161;
+  border-left: solid 5px transparent;
   border-right: solid 5px transparent;
 }

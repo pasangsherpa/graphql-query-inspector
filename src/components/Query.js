@@ -12,7 +12,7 @@ class Query extends Component {
       <div id='side'>
         <div><a href='#' className='close' onClick={handleOnClose}></a></div>
         <CollapsibleItem name='Response Headers' value={resHeaders}/>
-        <CollapsibleItem name='Request Headers' value={reqHeaders}/>
+        <CollapsibleItem name='Request Headers' value={reqHeaders} className='no-border'/>
       </div>
     );
   }

@@ -67,7 +67,7 @@ class Queries extends Component {
 
     return (
       <div>
-        <div id='main' style={{'width': this.state.currentQuery ? '370px' : '100%'}}>
+        <div id='main' style={{width: this.state.currentQuery ? '370px' : '100%'}}>
           <ReactTable
             data={queries}
             columns={this.getColumns()}
