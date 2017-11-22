@@ -81,8 +81,8 @@ ul {
 }
 
 .arrow {
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
   margin: 0 5px 2px 0;
   display: inline-block;
   vertical-align: middle;
