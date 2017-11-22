@@ -1,6 +1,13 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
+  color: #313942;
 }
 
 #main, #side {
@@ -10,12 +17,81 @@ html, body {
 #main {
   top: 0px;
   bottom: 0px;
-  width: 400px;
+  width: 370px;
 }
 
 #side {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  left: 400px;
+  left: 369px;
+  border-left: 1px solid #a3a3a3;
+}
+
+.close {
+  color: #777;
+  width: 15px;
+  height: 15px;
+  margin: 2px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  font: 16px/100% arial, sans-serif;
+}
+
+.close:after {
+  content: '×'; /* UTF-8 symbol */
+}
+
+.close:hover{
+  color: #fff;
+  background-color: #ec8e92;
+}
+
+.ReactTable .rt-tbody .rt-tr-group {
+  border-bottom: none;
+}
+
+.collapsible {
+  margin: 0 8px;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.collapsible-header {
+  padding: 4px 0;
+}
+
+.bold {
+  color: #616161;
+  font-weight: bold;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 6px 30px;
+  list-style: none;
+}
+
+.arrow {
+  width: 5px;
+  height: 5px;
+  margin: 0 5px 2px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.arrow-right {
+  border-left: solid 8px #616161;
+  border-bottom: solid 5px transparent;
+  border-top: solid 5px transparent;
+}
+
+.arrow-down {
+  border-top: solid 8px rgb(200,30,50);
+  border-left: solid 8px #616161;
+  border-right: solid 5px transparent;
 }

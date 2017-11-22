@@ -67,7 +67,7 @@ class Queries extends Component {
 
     return (
       <div>
-        <div id='main' style={{'width': this.state.currentQuery ? '400px' : '100%'}}>
+        <div id='main' style={{'width': this.state.currentQuery ? '370px' : '100%'}}>
           <ReactTable
             data={queries}
             columns={this.getColumns()}
@@ -78,12 +78,10 @@ class Queries extends Component {
           />
         </div>
         {this.state.currentQuery && (
-          <div id='side'>
-            <Query
-              query={this.state.currentQuery}
-              handleOnClose={() => this.setCurrentQuery(null)}
-            />
-          </div>
+          <Query
+            query={this.state.currentQuery}
+            handleOnClose={() => this.setCurrentQuery(null)}
+          />
         )}
       </div>
     );
