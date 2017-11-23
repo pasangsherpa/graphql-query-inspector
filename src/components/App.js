@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {parse} from '../utils/utils';
 import Queries from './Queries';
 
 class App extends Component {
@@ -10,9 +11,13 @@ class App extends Component {
   }
 
   requestHandler(request) {
-    this.setState({
-      queries: [request, ...this.state.queries]
-    });
+    const query = parse(request);
+
+    if (query) {
+      this.setState({
+        queries: [query, ...this.state.queries]
+      });
+    }
   }
 
   componentDidMount() {

@@ -76,8 +76,12 @@ html, body {
 
 ul {
   margin: 0;
-  padding: 0 0 6px 23px;
+  padding: 0 0 4px 23px;
   list-style: none;
+}
+
+li {
+  padding-bottom: 1px;
 }
 
 .arrow {

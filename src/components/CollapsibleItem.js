@@ -20,9 +20,25 @@ class CollapsibleItem extends Component {
   }
 
   render(){
-    const {name, value, className = ''} = this.props;
+    const {name, value, className = '', shouldSort = true} = this.props;
     const {isOpen} = this.state;
     const arrowClass = isOpen ? 'arrow arrow-down' : 'arrow arrow-right';
+
+    const compare = (a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+
+      let comparison = 0;
+      if (nameA > nameB) {
+        comparison = 1;
+      } else if (nameA < nameB) {
+        comparison = -1;
+      }
+
+      return comparison;
+    }
+
+    if (shouldSort) value.sort(compare);
 
     return (
       <div className={`collapsible ${className}`}>
@@ -35,7 +51,7 @@ class CollapsibleItem extends Component {
           {`${name} (${value.length})`}
         </div>
         <ul style={{display: isOpen ? 'block' : 'none'}}>
-          {this.renderListItem(value.sort((a, b) => a.name - b.name))}
+          {this.renderListItem(value)}
         </ul>
       </div>
     );
