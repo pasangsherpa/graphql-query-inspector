@@ -7,6 +7,7 @@ export const parse = req => {
 
   const {
     time,
+    getContent,
     serverIPAddress,
     startedDateTime,
     request: {
@@ -24,6 +25,7 @@ export const parse = req => {
 
   return {
     time,
+    getContent,
     startedDateTime,
     general: [{
       name: 'Request URL',

@@ -7,7 +7,6 @@ import 'react-table/react-table.css';
 class Queries extends Component {
   constructor(props) {
     super(props);
-
     this.state = {currentQuery: null};
   }
 

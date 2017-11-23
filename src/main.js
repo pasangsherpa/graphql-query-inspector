@@ -7,12 +7,14 @@ import './main.css';
 const {
   devtools: {
     panels,
-    network: {onRequestFinished, getHAR}
+    network: {
+      onRequestFinished
+    }
   }
 } = chrome;
 
 const title = 'GraphQL';
-const icon = 'inspect@48.pnga';
+const icon = 'inspect@48.png';
 const html = 'main.html';
 
 const renderApp = panelWindow => {

@@ -5,7 +5,6 @@ import Queries from './Queries';
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.state = {queries: []};
     this.requestHandler = this.requestHandler.bind(this);
   }
@@ -13,11 +12,10 @@ class App extends Component {
   requestHandler(request) {
     const query = parse(request);
 
-    if (query) {
-      this.setState({
-        queries: [query, ...this.state.queries]
-      });
-    }
+    if (!query) return;
+
+    const queries = [query, ...this.state.queries];
+    this.setState({queries});
   }
 
   componentDidMount() {
