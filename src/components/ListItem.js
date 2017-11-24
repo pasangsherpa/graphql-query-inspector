@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-const ListItem = (props) => {
+const ListItem = props => {
   const {name, value} = props;
   return (
     <li>
-      <span className='bold'>{name}</span>: <span>{value}</span>
+      <span className='bold'>{name}</span>
+      <span>{`: ${value}`}</span>
     </li>
   );
 }

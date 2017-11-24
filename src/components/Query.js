@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CollapsibleItem from './CollapsibleItem';
+import Headers from './Headers';
 
 class Query extends Component {
   constructor(props) {
@@ -16,19 +16,27 @@ class Query extends Component {
     });
   }
 
-  render() {
-    const {query, handleOnClose, id} = this.props;
+  getHeaders(query) {
+    const headers = [];
     const {general, request, response} = query;
     const {headers: reqHeaders} = request;
     const {headers: resHeaders} = response;
+
+    headers.push({name: 'General', value: general, shouldSort: false});
+    headers.push({name: 'Response Headers', value: resHeaders});
+    headers.push({name: 'Request Headers', value: reqHeaders});
+
+    return headers;
+  }
+
+  render() {
+    const {query, handleOnClose, id} = this.props;
 
     return (
       <div id='side'>
         <div><a href='#' className='close' onClick={handleOnClose}></a></div>
         <div>{this.state.content}</div>
-        <CollapsibleItem name='General' value={general} shouldSort={false}/>
-        <CollapsibleItem name='Response Headers' value={resHeaders}/>
-        <CollapsibleItem name='Request Headers' value={reqHeaders} className='no-border'/>
+        <Headers headers={this.getHeaders(query)}/>
       </div>
     );
   }
