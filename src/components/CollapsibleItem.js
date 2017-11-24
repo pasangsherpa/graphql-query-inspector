@@ -13,9 +13,9 @@ class CollapsibleItem extends Component {
   }
 
   renderListItem(listItems) {
-    return listItems.map(listItem => {
+    return listItems.map((listItem, index) => {
       const {name, value} = listItem;
-      return <ListItem key={name} name={name} value={value}/>;
+      return <ListItem key={index} name={name} value={value}/>;
     });
   }
 

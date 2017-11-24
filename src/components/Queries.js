@@ -40,7 +40,6 @@ class Queries extends Component {
 
   setCurrentQuery(query) {
     this.setState({'currentQuery': query});
-    console.log('currentQuery', this.state.currentQuery)
   }
 
   render() {

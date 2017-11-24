@@ -1,19 +1,11 @@
 import React, {Component} from 'react';
 import Headers from './Headers';
+import Response from './Response';
 
 class Query extends Component {
   constructor(props) {
     super(props);
     this.state = {content: null};
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const {query} = nextProps;
-    if (!query) return;
-
-    query.getContent(content => {
-      this.setState({content});
-    });
   }
 
   getHeaders(query) {
@@ -29,13 +21,38 @@ class Query extends Component {
     return headers;
   }
 
+  getContent(query) {
+    if (!query) return;
+
+    query.getContent(content => {
+      this.setState({content});
+    });
+  }
+
+  renderNav() {
+    const {handleOnClose} = this.props;
+    return (
+      <div>
+        <a href='#' className='close' onClick={handleOnClose}></a>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    this.getContent(this.props.query);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.getContent(nextProps.query);
+  }
+
   render() {
-    const {query, handleOnClose, id} = this.props;
+    const {query, id} = this.props;
 
     return (
       <div id='side'>
-        <div><a href='#' className='close' onClick={handleOnClose}></a></div>
-        <div>{this.state.content}</div>
+        {this.renderNav()}
+        <Response response={this.state.content}/>
         <Headers headers={this.getHeaders(query)}/>
       </div>
     );
