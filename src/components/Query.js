@@ -2,10 +2,18 @@ import React, {Component} from 'react';
 import Headers from './Headers';
 import Response from './Response';
 
+const tabs = {
+  headers: 'Headers',
+  response: 'Response'
+};
+
 class Query extends Component {
   constructor(props) {
     super(props);
-    this.state = {content: null};
+    this.state = {
+      content: null,
+      currentTab: tabs.headers
+    };
   }
 
   getHeaders(query) {
@@ -29,11 +37,26 @@ class Query extends Component {
     });
   }
 
+  setCurrentTab(event, tab) {
+    event.preventDefault();
+    this.setState({'currentTab': tab});
+  }
+
   renderNav() {
     const {handleOnClose} = this.props;
     return (
-      <div>
+      <div className='nav'>
         <a href='#' className='close' onClick={handleOnClose}></a>
+        {Object.values(tabs).map(tab => {
+          const isCurrentTab = this.state.currentTab === tab;
+          return (
+            <a
+              key={tab}
+              className={`tablinks ${isCurrentTab ? 'active' : ''}`}
+              onClick={(e) => this.setCurrentTab(e, tab)}
+            >{tab}</a>
+          );
+        })}
       </div>
     );
   }
@@ -52,8 +75,8 @@ class Query extends Component {
     return (
       <div id='side'>
         {this.renderNav()}
-        <Response response={this.state.content}/>
-        <Headers headers={this.getHeaders(query)}/>
+        {this.state.currentTab === tabs.response && <Response response={this.state.content}/>}
+        {this.state.currentTab === tabs.headers && <Headers headers={this.getHeaders(query)}/>}
       </div>
     );
   }

@@ -1,12 +1,7 @@
 import React from 'react';
-import CollapsibleItem from './CollapsibleItem';
 
 const Headers = props => {
-  return (
-    <div>
-      {props.response}
-    </div>
-  );
+  return <pre class='code'>{props.response}</pre>;
 }
 
 export default Headers;
