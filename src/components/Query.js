@@ -4,6 +4,7 @@ import Response from './Response';
 
 const tabs = {
   headers: 'Headers',
+  preview: 'Preview',
   response: 'Response'
 };
 
@@ -75,6 +76,7 @@ class Query extends Component {
     return (
       <div id='side'>
         {this.renderNav()}
+        {this.state.currentTab === tabs.preview && <Response response={this.state.content} type='pretty'/>}
         {this.state.currentTab === tabs.response && <Response response={this.state.content}/>}
         {this.state.currentTab === tabs.headers && <Headers headers={this.getHeaders(query)}/>}
       </div>

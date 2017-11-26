@@ -2,6 +2,7 @@ import React from 'react';
 
 const ListItem = props => {
   const {name, value} = props;
+
   return (
     <li>
       <span className='bold'>{name}</span>

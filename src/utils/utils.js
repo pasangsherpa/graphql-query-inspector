@@ -1,3 +1,11 @@
+export const safeJSONParse = json => {
+  try {
+    return JSON.parse(json);
+  } catch(e) {
+    return null;
+  }
+}
+
 const isGraphqlRequest = req => {
   return true;
 };

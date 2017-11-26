@@ -1,7 +1,14 @@
 import React from 'react';
+import ObjectInspector from 'react-object-inspector';
+import {safeJSONParse} from '../utils/utils';
 
-const Headers = props => {
-  return <pre class='code'>{props.response}</pre>;
+const Response = props => {
+  const {type, response} = props;
+  const prettify = type === 'pretty';
+
+  const data = prettify ? <ObjectInspector data={safeJSONParse(response)}/> : response;
+
+  return <pre class='code'>{data}</pre>;
 }
 
-export default Headers;
+export default Response;
