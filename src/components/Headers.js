@@ -10,7 +10,7 @@ const Headers = props => {
       return (
         <CollapsibleItem {...header} key={index} className={className}/>
       );
-    });
+    })
   );
 }
 

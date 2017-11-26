@@ -141,6 +141,6 @@ li {
   font-family: Menlo, monospace
 }
 
-.code > div {
-  line-height: 18px !important;
+.code div {
+  line-height: 16px !important;
 }
