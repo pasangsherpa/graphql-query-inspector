@@ -3,18 +3,14 @@ import CollapsibleItem from './CollapsibleItem';
 
 const Headers = props => {
   const {headers} = props;
+
   return (
-    <div>
-      {headers.map((header, index) => {
-        return (
-          <CollapsibleItem
-            className={index === headers.length - 1 ? 'no-border': ''}
-            key={index}
-            {...header}
-          />
-        );
-      })}
-    </div>
+    headers.map((header, index) => {
+      const className = index === headers.length - 1 ? 'no-border': '';
+      return (
+        <CollapsibleItem {...header} key={index} className={className}/>
+      );
+    });
   );
 }
 

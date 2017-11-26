@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ListItem from './ListItem';
+import {compareByName} from '../utils/utils';
 
 class CollapsibleItem extends Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class CollapsibleItem extends Component {
   }
 
   toggleOpen() {
-    this.setState({'isOpen': !this.state.isOpen});
+    this.setState({isOpen: !this.state.isOpen});
   }
 
   renderListItem(listItems) {
@@ -23,21 +24,7 @@ class CollapsibleItem extends Component {
     const {isOpen} = this.state;
     const arrowClass = isOpen ? 'arrow arrow-down' : 'arrow arrow-right';
 
-    const compare = (a, b) => {
-      const nameA = a.name.toLowerCase();
-      const nameB = b.name.toLowerCase();
-
-      let comparison = 0;
-      if (nameA > nameB) {
-        comparison = 1;
-      } else if (nameA < nameB) {
-        comparison = -1;
-      }
-
-      return comparison;
-    }
-
-    if (shouldSort) value.sort(compare);
+    if (shouldSort) value.sort(compareByName);
 
     return (
       <div className={`collapsible ${className}`}>
