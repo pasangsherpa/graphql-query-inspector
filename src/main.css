@@ -10,22 +10,32 @@ html, body {
   color: #313942;
 }
 
-#main, #side {
-  position: absolute;
+#root {
+  display: flex;
+  height: 100vh;
 }
 
-#main {
-  top: 0px;
-  bottom: 0px;
-  width: 370px;
+main {
+  display: flex;
+  flex: 1;
 }
 
-#side {
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 369px;
+aside, article {
+  overflow-y: scroll;
+}
+
+aside {
+  flex: auto;
   border-left: 1px solid #a3a3a3;
+}
+
+article {
+  flex: 1;
+}
+
+nav {
+  padding: 6px 0px 2px;
+  border-bottom: 1px solid #c1c1c1;
 }
 
 .close {
@@ -103,11 +113,6 @@ li {
   border-top: solid 8px #616161;
   border-left: solid 5px transparent;
   border-right: solid 5px transparent;
-}
-
-.nav {
-  padding: 6px 0px 2px;
-  border-bottom: 1px solid #c1c1c1;
 }
 
 .tablinks {

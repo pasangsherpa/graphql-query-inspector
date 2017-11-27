@@ -46,7 +46,7 @@ class Query extends Component {
   renderNav() {
     const {handleOnClose} = this.props;
     return (
-      <div className='nav'>
+      <nav>
         <a href='#' className='close' onClick={handleOnClose}></a>
         {Object.values(tabs).map(tab => {
           const isCurrentTab = this.state.currentTab === tab;
@@ -58,7 +58,7 @@ class Query extends Component {
             >{tab}</a>
           );
         })}
-      </div>
+      </nav>
     );
   }
 
@@ -74,12 +74,12 @@ class Query extends Component {
     const {query, id} = this.props;
 
     return (
-      <div id='side'>
+      <aside>
         {this.renderNav()}
         {this.state.currentTab === tabs.preview && <Response response={this.state.content} type='pretty'/>}
         {this.state.currentTab === tabs.response && <Response response={this.state.content}/>}
         {this.state.currentTab === tabs.headers && <Headers headers={this.getHeaders(query)}/>}
-      </div>
+      </aside>
     );
   }
 }

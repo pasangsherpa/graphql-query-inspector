@@ -64,8 +64,8 @@ class Queries extends Component {
     };
 
     return (
-      <div>
-        <div id='main' style={{width: this.state.currentQuery ? '370px' : '100%'}}>
+      <main>
+        <article style={{flex: this.state.currentQuery ? '0 0 370px' : '1'}}>
           <ReactTable
             data={queries}
             columns={this.getColumns()}
@@ -74,14 +74,14 @@ class Queries extends Component {
             className='-striped -highlight'
             getTdProps={getTdProps}
           />
-        </div>
+        </article>
         {this.state.currentQuery && (
           <Query
             query={this.state.currentQuery}
             handleOnClose={() => this.setCurrentQuery(null)}
           />
         )}
-      </div>
+      </main>
     );
   }
 }
